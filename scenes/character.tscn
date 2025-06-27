@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://vootwbtihjss"]
+[gd_scene load_steps=7 format=3 uid="uid://vootwbtihjss"]
 
-[ext_resource type="Texture2D" uid="uid://w0pnyslbl8oq" path="res://icon.svg" id="1_agfs1"]
+[ext_resource type="Texture2D" uid="uid://vagluxex1hlm" path="res://assets/kenney_pirate-pack/PNG/Default size/Ships/ship (1).png" id="2_my7n2"]
 [ext_resource type="Script" uid="uid://caddjtjv4vqj4" path="res://scenes/character.gd" id="2_rkhd4"]
 [ext_resource type="Texture2D" uid="uid://blnxps15vkj5" path="res://assets/input_circle.png" id="3_lrhn5"]
 [ext_resource type="Texture2D" uid="uid://y0sfwhvimmkj" path="res://assets/input_check.png" id="4_my7n2"]
+[ext_resource type="Texture2D" uid="uid://m0pc3vn4j2t5" path="res://assets/kenney_pirate-pack/PNG/Default size/Ship parts/cannon.png" id="5_dp8ca"]
+[ext_resource type="Texture2D" uid="uid://dqskus26pbmch" path="res://assets/kenney_pirate-pack/PNG/Default size/Ship parts/crew (1).png" id="6_0lw5n"]
 
 [node name="character" type="Control" node_paths=PackedStringArray("image", "input_checks", "input_complete_icon")]
 custom_minimum_size = Vector2(32, 32)
@@ -25,8 +27,30 @@ offset_bottom = 40.0
 pivot_offset = Vector2(20, 20)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_agfs1")
+texture = ExtResource("2_my7n2")
 expand_mode = 1
+stretch_mode = 5
+flip_v = true
+
+[node name="cannon" type="TextureRect" parent="image"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 3.0
+offset_right = 32.0
+offset_bottom = 18.0
+texture = ExtResource("5_dp8ca")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="crew" type="TextureRect" parent="image"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 4.0
+offset_right = 25.0
+offset_bottom = 16.0
+texture = ExtResource("6_0lw5n")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="input_checks" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -74,6 +98,7 @@ expand_mode = 1
 
 [node name="input_complete_icon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(5, 5)
+layout_mode = 0
 offset_left = 18.0
 offset_top = -6.0
 offset_right = 23.0
