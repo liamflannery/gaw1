@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm2d3dypuxuyc"]
+
+[ext_resource type="Texture2D" uid="uid://mr7ykdmi3s1p" path="res://heart.png" id="1_7cosj"]
+[ext_resource type="FontFile" uid="uid://d1knmpyue5bsk" path="res://Fonts/Kenney Mini Square Mono.ttf" id="2_61bok"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ym1bn"]
+bg_color = Color(0.0144581, 0.655359, 0.866298, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.43588, 0.820071, 0.999151, 1)
+
+[node name="Screen" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player Health" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 183.0
+offset_bottom = 76.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ym1bn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player Health"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -36.0
+offset_right = 44.0
+offset_bottom = -4.0
+grow_vertical = 0
+
+[node name="Heart 1" type="TextureRect" parent="Player Health/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("1_7cosj")
+expand_mode = 1
+
+[node name="Heart 2" type="TextureRect" parent="Player Health/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("1_7cosj")
+expand_mode = 1
+
+[node name="Heart 3" type="TextureRect" parent="Player Health/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("1_7cosj")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Player Health"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_61bok")
+text = "P1 HEALTH"
+horizontal_alignment = 1
+vertical_alignment = 1
