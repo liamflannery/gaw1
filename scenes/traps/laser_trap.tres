@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Laser" load_steps=6 format=3 uid="uid://cbad43026jb34"]
+
+[ext_resource type="Script" uid="uid://cwxyw5xtob11u" path="res://scenes/traps/laser_trap.gd" id="1_jdvls"]
+[ext_resource type="Texture2D" uid="uid://donyfprdbc8bt" path="res://assets/kenney_1-bit-pack/Tilesheet/colored-transparent.png" id="2_gtlqa"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gtlqa"]
+load_path = "res://.godot/imported/colored-transparent.png-314fab4bf0f4e2f674e6c1353c795bfb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26qxx"]
+atlas = SubResource("CompressedTexture2D_gtlqa")
+region = Rect2(663, 357, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7utx"]
+atlas = ExtResource("2_gtlqa")
+region = Rect2(646, 153, 17, 17)
+
+[resource]
+script = ExtResource("1_jdvls")
+laser_texture = SubResource("AtlasTexture_26qxx")
+trap_texture = SubResource("AtlasTexture_q7utx")
+metadata/_custom_type_script = "uid://cwxyw5xtob11u"

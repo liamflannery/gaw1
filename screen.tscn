@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bm2d3dypuxuyc"]
 
 [ext_resource type="Texture2D" uid="uid://mr7ykdmi3s1p" path="res://heart.png" id="1_7cosj"]
-[ext_resource type="FontFile" uid="uid://d1knmpyue5bsk" path="res://Fonts/Kenney Mini Square Mono.ttf" id="2_61bok"]
+[ext_resource type="FontFile" uid="uid://d1knmpyue5bsk" path="res://assets/Fonts/Kenney Mini Square Mono.ttf" id="2_61bok"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ym1bn"]
 bg_color = Color(0.0144581, 0.655359, 0.866298, 1)
