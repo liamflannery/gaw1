@@ -15,7 +15,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(20, 20)
 script = ExtResource("2_rkhd4")
-image = NodePath("")
+image = NodePath("image")
 input_checks = NodePath("input_checks")
 input_complete_icon = NodePath("input_complete_icon")
 

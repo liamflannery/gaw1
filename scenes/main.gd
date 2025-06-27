@@ -15,6 +15,6 @@ func move_players():
 	for i in range(4):
 		player_1.do_action(player_1.inputs[i])
 		player_2.do_action(player_2.inputs[i])
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.4).timeout
 	player_1.clear_actions()
 	player_2.clear_actions()

@@ -2,7 +2,7 @@ extends Control
 class_name Character
 
 @onready var grid : Grid = get_tree().get_first_node_in_group("grid")
-@export var image : NinePatchRect
+@export var image : TextureRect
 @export var player_1 : bool
 @export var input_checks : HBoxContainer
 @export var input_complete_icon : NinePatchRect
@@ -36,7 +36,7 @@ func set_tile(this_tile : Tile, teleport=false):
 		global_position = target_position
 	else:
 		move_tween = create_tween()
-		move_tween.tween_property(self, "global_position", target_position, 0.5)
+		move_tween.tween_property(self, "global_position", target_position, 0.4)
 	current_tile = this_tile
 	if move_tween: await move_tween.finished
 

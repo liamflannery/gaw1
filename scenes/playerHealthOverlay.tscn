@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdwg8c35j65xs"]
+
+[ext_resource type="Script" uid="uid://bj7xvktfktk55" path="res://scenes/player_health_overlay.gd" id="1_3clwe"]
+[ext_resource type="Texture2D" uid="uid://mr7ykdmi3s1p" path="res://assets/heart.png" id="1_s4xco"]
+[ext_resource type="FontFile" uid="uid://d1knmpyue5bsk" path="res://assets/Fonts/Kenney Mini Square Mono.ttf" id="2_3clwe"]
+[ext_resource type="Texture2D" uid="uid://donyfprdbc8bt" path="res://assets/kenney_1-bit-pack/Tilesheet/colored-transparent.png" id="3_110jr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3clwe"]
+bg_color = Color(0.0156863, 0.654902, 0.866667, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.435294, 0.819608, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_110jr"]
+bg_color = Color(0.0156863, 0.654902, 0.866667, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.435294, 0.819608, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0333"]
+bg_color = Color(0.278431, 0.176471, 0.235294, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkhd4"]
+atlas = ExtResource("3_110jr")
+region = Rect2(425, 153, 17, 17)
+
+[node name="Player Health" type="Panel" node_paths=PackedStringArray("textLabel", "lil_guy")]
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 176.0
+offset_bottom = 76.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3clwe")
+script = ExtResource("1_3clwe")
+player_2_colour = Color(0.997904, 0.303875, 0.508515, 1)
+player_2_border_colour = Color(0.999523, 0.639915, 0.709397, 1)
+styleBox = SubResource("StyleBoxFlat_110jr")
+textLabel = NodePath("RichTextLabel")
+lil_guy = NodePath("HBoxContainer/Panel/Guy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -36.0
+offset_right = 160.0
+offset_bottom = -4.0
+grow_vertical = 0
+
+[node name="Heart 1" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("1_s4xco")
+expand_mode = 1
+
+[node name="Heart 2" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("1_s4xco")
+expand_mode = 1
+
+[node name="Heart 3" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("1_s4xco")
+expand_mode = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p0333")
+
+[node name="Guy" type="TextureRect" parent="HBoxContainer/Panel"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 33.0
+offset_bottom = 33.0
+texture = SubResource("AtlasTexture_rkhd4")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_3clwe")
+text = "P1 HEALTH"
+horizontal_alignment = 1
+vertical_alignment = 1
