@@ -95,12 +95,14 @@ layout_mode = 2
 [node name="tile16" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
 
-[node name="character" parent="." instance=ExtResource("3_sugp2")]
+[node name="character" parent="." node_paths=PackedStringArray("health_ui") instance=ExtResource("3_sugp2")]
 layout_mode = 0
 player_1 = true
+health_ui = NodePath("../Panel/P1 Health")
 
-[node name="character2" parent="." instance=ExtResource("3_sugp2")]
+[node name="character2" parent="." node_paths=PackedStringArray("health_ui") instance=ExtResource("3_sugp2")]
 layout_mode = 0
+health_ui = NodePath("../Panel/P2 Health")
 
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)

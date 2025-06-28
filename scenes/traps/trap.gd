@@ -4,3 +4,6 @@ class_name Trap
 
 func apply_trap(this_tile : Tile, character : Character):
 	pass
+
+func turn_ended(this_tile : Tile, character : Character):
+	pass

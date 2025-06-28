@@ -6,6 +6,12 @@ class_name Character
 @export var player_1 : bool
 @export var input_checks : HBoxContainer
 @export var input_complete_icon : NinePatchRect
+@export var health_ui : HealthUI
+var health : int = 3 :
+	set(value):
+		health = value
+		if health_ui:
+			health_ui.set_health(health)
 var current_tile : Tile
 
 
@@ -17,7 +23,8 @@ var inputs : Array[DIRECTION]
 var ready_to_move : bool = false
 func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
-	set_tile(grid.all_tiles.pick_random(), true)
+	current_tile = grid.all_tiles.pick_random()
+	set_tile(current_tile, true)
 	for check in input_checks.get_children():
 		check.hide()
 	input_complete_icon.hide()
@@ -37,8 +44,12 @@ func set_tile(this_tile : Tile, teleport=false):
 	else:
 		move_tween = create_tween()
 		move_tween.tween_property(self, "global_position", target_position, 0.4)
-	current_tile = this_tile
+	
 	if move_tween: await move_tween.finished
+	current_tile.character_exited(self)
+	current_tile = this_tile
+	current_tile.character_entered(self)
+	
 
 
 
@@ -57,7 +68,7 @@ func move_in_direction(direction : DIRECTION):
 	if !target_tile:
 		return
 	await set_tile(target_tile)
-	await target_tile.character_entered(self)
+	
 
 
 func _process(_delta: float) -> void:
@@ -82,7 +93,15 @@ func _process(_delta: float) -> void:
 
 func do_action(action : DIRECTION):
 	await move_in_direction(action)
-			
+
+func damage_player(amount : int):
+	health -= amount
+	if health <= 0:
+		kill_player()
+
+func kill_player():
+	pass
+	
 func add_action(action : DIRECTION):
 	if inputs.size() >= 4:
 		return

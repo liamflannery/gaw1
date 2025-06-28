@@ -1,5 +1,5 @@
 extends Panel
-
+class_name HealthUI
 @export var player_1 : bool
 @export var player_2_colour : Color
 @export var player_2_border_colour : Color
@@ -19,3 +19,15 @@ func _ready() -> void:
 func _process(_delta : float) -> void:
 	if lil_guy.texture != player.image.texture:
 		lil_guy.texture = player.image.texture ## I'm assuming the image from the character was going to be the guy, idk
+
+func set_health(amount : int):
+	%heart_1.hide()
+	%heart_2.hide()
+	%heart_3.hide()
+	if amount >= 1:
+		%heart_1.show()
+	if amount >= 2:
+		%heart_2.show()
+	if amount >= 3:
+		%heart_3.show()
+		

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LaserEffect" load_steps=4 format=3 uid="uid://c680xvx6vb0rf"]
+
+[ext_resource type="Script" uid="uid://b12jl643dphhk" path="res://scenes/effects/laser_effect.gd" id="1_5wbjx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gtlqa"]
+load_path = "res://.godot/imported/colored-transparent.png-314fab4bf0f4e2f674e6c1353c795bfb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wbjx"]
+atlas = SubResource("CompressedTexture2D_gtlqa")
+region = Rect2(663, 357, 17, 17)
+
+[resource]
+script = ExtResource("1_5wbjx")
+effect_texture = SubResource("AtlasTexture_5wbjx")
+metadata/_custom_type_script = "uid://b12jl643dphhk"
