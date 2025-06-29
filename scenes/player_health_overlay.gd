@@ -7,6 +7,8 @@ class_name HealthUI
 @export var textLabel : RichTextLabel
 @export var player : Character
 @export var lil_guy : TextureRect
+@export var shadowTexture : Texture
+@export var heartTexture : Texture
 
 func _ready() -> void:
 	if !player_1:
@@ -16,18 +18,14 @@ func _ready() -> void:
 		add_theme_stylebox_override("panel", styleBox)
 		textLabel.text = "P2 HEALTH"
 
-func _process(_delta : float) -> void:
-	if lil_guy.texture != player.image.texture:
-		lil_guy.texture = player.image.texture ## I'm assuming the image from the character was going to be the guy, idk
-
 func set_health(amount : int):
-	%heart_1.hide()
-	%heart_2.hide()
-	%heart_3.hide()
+	%heart_1.texture = shadowTexture
+	%heart_2.texture = shadowTexture
+	%heart_3.texture = shadowTexture
 	if amount >= 1:
-		%heart_1.show()
+		%heart_1.texture = heartTexture
 	if amount >= 2:
-		%heart_2.show()
+		%heart_2.texture = heartTexture
 	if amount >= 3:
-		%heart_3.show()
+		%heart_3.texture = heartTexture
 		

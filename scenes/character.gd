@@ -13,7 +13,7 @@ var health : int = 3 :
 		if health_ui:
 			health_ui.set_health(health)
 var current_tile : Tile
-
+var dead : bool
 
 
 enum DIRECTION{
@@ -138,6 +138,15 @@ func damage_player(amount : int):
 		kill_player()
 
 func kill_player():
+	if dead:
+		return
+	dead = true
+	
+	image.flip_v = true
+	image.modulate = Color(0.1, 0.1, 0.1, 1)
+	health_ui.lil_guy.flip_v = true
+	health_ui.lil_guy.modulate = Color(0.1, 0.1, 0.1, 1)
+	Stage.playerDead += 1 if player_1 else 2 ## this way if both players die together we'll know because it'll be 3 lol
 	pass
 	
 func add_action(action : DIRECTION):

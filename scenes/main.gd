@@ -43,5 +43,9 @@ func move_players():
 		for tile in grid.all_tiles:
 			await tile.turn_ended()
 		await get_tree().create_timer(0.4).timeout
+		
+		if Stage.playerDead > 0:
+			## show end ui
+			break
 	player_1.clear_actions()
 	player_2.clear_actions()
