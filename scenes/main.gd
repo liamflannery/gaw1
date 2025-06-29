@@ -28,14 +28,17 @@ func move_players():
 		
 		## execute on the actions/stumbles now that we know where everyone wants to go
 		for tile : Tile in proposed_tiles.keys():
-			if proposed_tiles[tile].size() > 1: ##
+			if proposed_tiles[tile].size() > 1:
 				for char : Character in proposed_tiles[tile]:
 					char.do_action(char.inputs[i], false) ## these Characters stumble because they're trying to walk into the same spot
 			else: ## I'm assuming there'll always be one character here hehe
 				proposed_tiles[tile][0].do_action(proposed_tiles[tile][0].inputs[i], true)
 
+		## maybe drop an await here? seems like the traps are getting triggered the turn after you step on them, might have started with my stumble changes
 		for tile : Tile in grid.all_tiles:
-			await tile.apply_tile()
+			await tile.apply_traps()
+		for tile: Tile in grid.all_tiles:
+			await tile.apply_effects()
 		await get_tree().create_timer(0.4).timeout
 		for tile in grid.all_tiles:
 			await tile.turn_ended()

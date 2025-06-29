@@ -25,10 +25,12 @@ func character_exited(character : Character):
 	if character in current_characters:
 		current_characters.erase(character)
 
-func apply_tile():
+func apply_traps():
 	if trap and !current_characters.is_empty():
 		for character in current_characters:
 			await trap.apply_trap(self, character)
+
+func apply_effects():
 	for effect in effects:
 		for character in current_characters:
 			await effect.effect_resource.apply_effect(self, character)
