@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://km8en2h75fvq"]
+[gd_scene load_steps=0 format=3 uid="uid://km8en2h75fvq"]
 
 [node name="effect_texture" type="TextureRect"]
 anchors_preset = 8

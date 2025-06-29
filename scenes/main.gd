@@ -3,6 +3,11 @@ extends Control
 @export var player_2 : Character
 @export var grid : Grid
 
+var characters : Array[Character]
+
+func _ready() -> void:
+	characters = [player_1, player_2] ## the idea here is that later characters will be children of a generic class that npcs can use too and we add them all to this array
+
 func _process(_delta: float) -> void:
 	if player_1.ready_to_move and player_2.ready_to_move:
 		move_players()
@@ -13,8 +18,22 @@ func move_players():
 	player_1.input_complete_icon.hide()
 	player_2.input_complete_icon.hide()
 	for i in range(4):
-		player_1.do_action(player_1.inputs[i])
-		await player_2.do_action(player_2.inputs[i])
+		
+		var proposed_tiles = {} ## key will be a tile that someone wants to go to, value will be an array of all characters that want to go to that tile.
+		for char : Character in characters:
+			if proposed_tiles.has(char.predict_action(char.inputs[i])):
+				proposed_tiles[char.predict_action(char.inputs[i])].append(char)
+			else:
+				proposed_tiles[char.predict_action(char.inputs[i])] = [char]
+		
+		## execute on the actions/stumbles now that we know where everyone wants to go
+		for tile : Tile in proposed_tiles.keys():
+			if proposed_tiles[tile].size() > 1: ##
+				for char : Character in proposed_tiles[tile]:
+					char.do_action(char.inputs[i], false) ## these Characters stumble because they're trying to walk into the same spot
+			else: ## I'm assuming there'll always be one character here hehe
+				proposed_tiles[tile][0].do_action(proposed_tiles[tile][0].inputs[i], true)
+
 		for tile : Tile in grid.all_tiles:
 			await tile.apply_tile()
 		await get_tree().create_timer(0.4).timeout

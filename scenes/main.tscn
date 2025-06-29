@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://f8bhx021rxw"]
+[gd_scene load_steps=9 format=3 uid="uid://f8bhx021rxw"]
 
 [ext_resource type="Script" uid="uid://c4gg3ljp0wwoa" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://c0pe00ut5pybo" path="res://scenes/grid.gd" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://vootwbtihjss" path="res://scenes/character.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cbmjtj8dikb44" path="res://scenes/tile.tscn" id="3_tefeu"]
-[ext_resource type="Resource" uid="uid://cbad43026jb34" path="res://scenes/traps/laser_trap.tres" id="4_tbgi4"]
+[ext_resource type="Resource" uid="uid://bb3jp1607fmiv" path="res://scenes/traps/laser_trap_west.tres" id="5_85g3d"]
+[ext_resource type="Resource" uid="uid://bsknf7ropwr2t" path="res://scenes/traps/clover_bomb.tres" id="5_o6xl0"]
+[ext_resource type="Resource" uid="uid://cmu600c1m657w" path="res://scenes/traps/laser_trap_east.tres" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://cdwg8c35j65xs" path="res://scenes/playerHealthOverlay.tscn" id="6_tefeu"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("player_1", "player_2", "grid")]
@@ -48,7 +50,6 @@ script = ExtResource("2_0wfyh")
 
 [node name="tile" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
-trap = ExtResource("4_tbgi4")
 
 [node name="tile2" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
@@ -67,15 +68,19 @@ layout_mode = 2
 
 [node name="tile7" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
+trap = ExtResource("5_o6xl0")
 
 [node name="tile8" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
+trap = ExtResource("5_85g3d")
 
 [node name="tile9" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
+trap = ExtResource("6_choun")
 
 [node name="tile10" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
+trap = ExtResource("5_o6xl0")
 
 [node name="tile11" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2

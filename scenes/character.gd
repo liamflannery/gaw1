@@ -50,11 +50,28 @@ func set_tile(this_tile : Tile, teleport=false):
 	current_tile = this_tile
 	current_tile.character_entered(self)
 	
+func stumble_into_tile(this_tile : Tile):
+	if !this_tile:
+		return
+	if move_tween and move_tween.is_running():
+		move_tween.custom_step(1000000)
+		move_tween.kill()
+	
+	var target_position = this_tile.global_position - size/2 + this_tile.size/2
+	var original_position = global_position
+	target_position = (target_position + original_position)/2
+	move_tween = create_tween()
+	move_tween.tween_property(self, "global_position", target_position, 0.2)
+	if move_tween: await move_tween.finished
+	move_tween.kill() ## this prolly isn't necessary?
+	move_tween = create_tween()
+	move_tween.tween_property(self, "global_position", original_position, 0.2)
+	## also add a rotate/shake tween here?
+	
+	if move_tween: await move_tween.finished
 
 
-
-
-func move_in_direction(direction : DIRECTION):
+func move_in_direction(direction : DIRECTION, succeed : bool):
 	var target_tile : Tile
 	match direction:
 		DIRECTION.UP:
@@ -67,7 +84,10 @@ func move_in_direction(direction : DIRECTION):
 			target_tile = grid.get_east_tile(current_tile)
 	if !target_tile:
 		return
-	await set_tile(target_tile)
+	if succeed:
+		await set_tile(target_tile)
+	else:
+		await stumble_into_tile(target_tile)
 	
 
 
@@ -91,8 +111,26 @@ func _process(_delta: float) -> void:
 		elif Input.is_action_just_pressed("player_2_move_down"):
 			add_action(DIRECTION.DOWN)
 
-func do_action(action : DIRECTION):
-	await move_in_direction(action)
+func predict_action(action : DIRECTION) -> Tile:
+	var return_tile = current_tile
+	match action:
+		DIRECTION.UP:
+			return_tile = grid.get_north_tile(current_tile)
+		DIRECTION.DOWN:
+			return_tile = grid.get_south_tile(current_tile)
+		DIRECTION.LEFT:
+			return_tile = grid.get_west_tile(current_tile)
+		DIRECTION.RIGHT:
+			return_tile = grid.get_east_tile(current_tile)
+	
+	if return_tile:
+		return return_tile
+	else:
+		return current_tile
+	
+
+func do_action(action : DIRECTION, succeed : bool):
+	await move_in_direction(action, succeed)
 
 func damage_player(amount : int):
 	health -= amount
