@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Clover_Bomb" load_steps=4 format=3 uid="uid://bsknf7ropwr2t"]
+
+[ext_resource type="Script" uid="uid://vb2bqcfbu5o7" path="res://scenes/traps/clover_bomb.gd" id="1_copdl"]
+[ext_resource type="Texture2D" uid="uid://donyfprdbc8bt" path="res://assets/kenney_1-bit-pack/Tilesheet/colored-transparent.png" id="2_1aghk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xbl2"]
+atlas = ExtResource("2_1aghk")
+region = Rect2(272, 34, 17, 17)
+
+[resource]
+script = ExtResource("1_copdl")
+trap_texture = SubResource("AtlasTexture_7xbl2")
+metadata/_custom_type_script = "uid://vb2bqcfbu5o7"

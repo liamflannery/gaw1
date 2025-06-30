@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdwg8c35j65xs"]
+[gd_scene load_steps=10 format=3 uid="uid://cdwg8c35j65xs"]
 
 [ext_resource type="Script" uid="uid://bj7xvktfktk55" path="res://scenes/player_health_overlay.gd" id="1_3clwe"]
 [ext_resource type="Texture2D" uid="uid://mr7ykdmi3s1p" path="res://assets/heart.png" id="1_s4xco"]
 [ext_resource type="FontFile" uid="uid://d1knmpyue5bsk" path="res://assets/Fonts/Kenney Mini Square Mono.ttf" id="2_3clwe"]
+[ext_resource type="Texture2D" uid="uid://bv040c4te3cs4" path="res://assets/shadow.png" id="2_p0333"]
 [ext_resource type="Texture2D" uid="uid://donyfprdbc8bt" path="res://assets/kenney_1-bit-pack/Tilesheet/colored-transparent.png" id="3_110jr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3clwe"]
@@ -40,6 +41,8 @@ player_2_border_colour = Color(0.999523, 0.639915, 0.709397, 1)
 styleBox = SubResource("StyleBoxFlat_110jr")
 textLabel = NodePath("RichTextLabel")
 lil_guy = NodePath("HBoxContainer/Panel/Guy")
+shadowTexture = ExtResource("2_p0333")
+heartTexture = ExtResource("1_s4xco")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
