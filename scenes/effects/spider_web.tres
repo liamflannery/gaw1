@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SpiderWeb" load_steps=4 format=3 uid="uid://c0yb2h1ysccc7"]
+
+[ext_resource type="Script" uid="uid://4s5g17wsd5ac" path="res://scenes/effects/spider_web.gd" id="1_26x2k"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gtlqa"]
+load_path = "res://.godot/imported/colored-transparent.png-314fab4bf0f4e2f674e6c1353c795bfb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26x2k"]
+atlas = SubResource("CompressedTexture2D_gtlqa")
+region = Rect2(34, 255, 17, 17)
+
+[resource]
+script = ExtResource("1_26x2k")
+effect_texture = SubResource("AtlasTexture_26x2k")
+metadata/_custom_type_script = "uid://4s5g17wsd5ac"

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://f8bhx021rxw"]
+[gd_scene load_steps=10 format=3 uid="uid://f8bhx021rxw"]
 
 [ext_resource type="Script" uid="uid://c4gg3ljp0wwoa" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://c0pe00ut5pybo" path="res://scenes/grid.gd" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://vootwbtihjss" path="res://scenes/character.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cbmjtj8dikb44" path="res://scenes/tile.tscn" id="3_tefeu"]
+[ext_resource type="Resource" uid="uid://c0yb2h1ysccc7" path="res://scenes/effects/spider_web.tres" id="4_85g3d"]
 [ext_resource type="Resource" uid="uid://bb3jp1607fmiv" path="res://scenes/traps/laser_trap_west.tres" id="5_85g3d"]
 [ext_resource type="Resource" uid="uid://bsknf7ropwr2t" path="res://scenes/traps/clover_bomb.tres" id="5_o6xl0"]
 [ext_resource type="Resource" uid="uid://cmu600c1m657w" path="res://scenes/traps/laser_trap_east.tres" id="6_choun"]
@@ -59,6 +60,7 @@ layout_mode = 2
 
 [node name="tile4" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
+starting_effects = Array[Object]([ExtResource("4_85g3d")])
 
 [node name="tile5" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2

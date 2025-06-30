@@ -65,3 +65,5 @@ func remove_effect(effect : Effect):
 			remove_child(effect_texture)
 			effect_texture.queue_free()
 			effects.erase(effect_object)
+func get_effects() -> Array[EffectObject]:
+	return effects

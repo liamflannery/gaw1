@@ -20,6 +20,7 @@ input_checks = NodePath("input_checks")
 input_complete_icon = NodePath("input_complete_icon")
 
 [node name="image" type="TextureRect" parent="."]
+self_modulate = Color(0.992006, 0.741109, 0.180412, 1)
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = -1

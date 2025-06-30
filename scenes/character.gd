@@ -130,6 +130,9 @@ func predict_action(action : DIRECTION) -> Tile:
 	
 
 func do_action(action : DIRECTION, succeed : bool):
+	for effect : Tile.EffectObject in current_tile.get_effects():
+		if !effect.effect_resource.can_player_move(current_tile, self):
+			return
 	await move_in_direction(action, succeed)
 
 func damage_player(amount : int):

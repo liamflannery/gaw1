@@ -7,3 +7,6 @@ func apply_effect(this_tile : Tile, character : Character):
 
 func turn_ended(this_tile: Tile):
 	pass
+
+func can_player_move(this_tile : Tile, character : Character) -> bool:
+	return true
