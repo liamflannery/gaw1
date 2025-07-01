@@ -9,6 +9,8 @@ region = Rect2(646, 153, 17, 17)
 
 [resource]
 script = ExtResource("1_pbs7n")
+flip_image_h = false
+flip_image_v = false
 shooting_direction = 2
 trap_texture = SubResource("AtlasTexture_q7utx")
 metadata/_custom_type_script = "uid://cwxyw5xtob11u"

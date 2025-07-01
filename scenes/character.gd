@@ -7,7 +7,7 @@ class_name Character
 @export var input_checks : HBoxContainer
 @export var input_complete_icon : NinePatchRect
 @export var health_ui : HealthUI
-var health : int = 3 :
+@export var health : int = 3 :
 	set(value):
 		health = value
 		if health_ui:
@@ -110,6 +110,8 @@ func predict_action(action : DIRECTION) -> Tile:
 	
 
 func do_action(action : DIRECTION, succeed : bool):
+	if health <= 0:
+		return
 	for effect : Tile.EffectObject in current_tile.get_effects():
 		if !effect.effect_resource.can_player_move(current_tile, self):
 			return
@@ -127,12 +129,17 @@ func kill_player():
 	
 	image.flip_v = true
 	image.modulate = Color(0.1, 0.1, 0.1, 1)
-	health_ui.lil_guy.flip_v = true
-	health_ui.lil_guy.modulate = Color(0.1, 0.1, 0.1, 1)
+	if health_ui:
+		health_ui.lil_guy.flip_v = true
+		health_ui.lil_guy.modulate = Color(0.1, 0.1, 0.1, 1)
 	#Stage.playerDead += 1 if player_1 else 2 ## this way if both players die together we'll know because it'll be 3 lol
-	pass
+	input_checks.hide()
+	if current_tile:
+		current_tile.character_exited(self)
 	
 func add_action(action : DIRECTION):
+	if dead:
+		return
 	if inputs.size() >= 4:
 		return
 	inputs.append(action)

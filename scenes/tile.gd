@@ -11,7 +11,9 @@ func _ready() -> void:
 		%trap_texture.texture = null
 	else:
 		%trap_texture.texture = trap.trap_texture
-
+		%trap_texture.flip_h = trap.flip_image_h
+		%trap_texture.flip_v = trap.flip_image_v
+		%trap_texture.rotation_degrees = trap.rotate_degrees
 	for effect in starting_effects:
 		add_effect(effect)
 
@@ -53,8 +55,10 @@ class EffectObject:
 @onready var effect_texture_scene : PackedScene = load("res://scenes/effect_texture.tscn")
 func add_effect(effect : Effect):
 	if effect in effects.map(func(a): return a.effect_resource): return
-	var effect_texture = effect_texture_scene.instantiate()
+	var effect_texture : TextureRect = effect_texture_scene.instantiate()
 	effect_texture.texture = effect.effect_texture
+	effect_texture.flip_h = effect.flip_image_h
+	effect_texture.flip_v = effect.flip_image_v
 	add_child(effect_texture)
 	effects.append(EffectObject.new(effect, effect_texture.get_index()))
 

@@ -1,15 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://f8bhx021rxw"]
+[gd_scene load_steps=14 format=3 uid="uid://f8bhx021rxw"]
 
 [ext_resource type="Script" uid="uid://c4gg3ljp0wwoa" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="Script" uid="uid://c0pe00ut5pybo" path="res://scenes/grid.gd" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://vootwbtihjss" path="res://scenes/player.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cbmjtj8dikb44" path="res://scenes/tile.tscn" id="3_tefeu"]
 [ext_resource type="Resource" uid="uid://c0yb2h1ysccc7" path="res://scenes/effects/spider_web.tres" id="4_85g3d"]
+[ext_resource type="Script" uid="uid://bfs24ywtun1gm" path="res://scenes/effects/effect.gd" id="4_ya4ey"]
 [ext_resource type="Resource" uid="uid://bb3jp1607fmiv" path="res://scenes/traps/laser_trap_west.tres" id="5_85g3d"]
 [ext_resource type="Resource" uid="uid://bsknf7ropwr2t" path="res://scenes/traps/clover_bomb.tres" id="5_o6xl0"]
 [ext_resource type="Resource" uid="uid://cmu600c1m657w" path="res://scenes/traps/laser_trap_east.tres" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://cdwg8c35j65xs" path="res://scenes/playerHealthOverlay.tscn" id="6_tefeu"]
+[ext_resource type="Resource" uid="uid://bbh7tv3uw4ekf" path="res://scenes/traps/laser_trap_south.tres" id="7_trceg"]
 [ext_resource type="PackedScene" uid="uid://dpxv3wx8y3eeo" path="res://scenes/skeleton_dude.tscn" id="8_choun"]
+[ext_resource type="Resource" uid="uid://cbad43026jb34" path="res://scenes/traps/laser_trap_north.tres" id="11_a8y0u"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("player_1", "player_2", "grid", "npcs")]
 layout_mode = 3
@@ -22,7 +25,7 @@ script = ExtResource("1_jyhfs")
 player_1 = NodePath("character")
 player_2 = NodePath("character2")
 grid = NodePath("GridContainer")
-npcs = [NodePath("skeleton_dude")]
+npcs = [NodePath("skeleton_dude"), NodePath("skeleton_dude2"), NodePath("skeleton_dude3"), NodePath("skeleton_dude4"), NodePath("skeleton_dude5")]
 
 [node name="background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -32,6 +35,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.717647, 0.454902, 0.337255, 1)
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="P1 Health" parent="Panel" node_paths=PackedStringArray("player") instance=ExtResource("6_tefeu")]
+layout_mode = 1
+offset_top = 12.0
+offset_bottom = 77.0
+player_1 = true
+player = NodePath("../../character")
+
+[node name="P2 Health" parent="Panel" node_paths=PackedStringArray("player") instance=ExtResource("6_tefeu")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -176.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 77.0
+grow_horizontal = 0
+player = NodePath("../../character2")
 
 [node name="GridContainer" type="GridContainer" parent="." groups=["grid"]]
 layout_mode = 1
@@ -48,7 +79,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
-columns = 4
+columns = 14
 script = ExtResource("2_0wfyh")
 
 [node name="tile" parent="GridContainer" instance=ExtResource("3_tefeu")]
@@ -62,14 +93,15 @@ layout_mode = 2
 
 [node name="tile4" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
-starting_effects = Array[Object]([ExtResource("4_85g3d")])
+starting_effects = Array[ExtResource("4_ya4ey")]([ExtResource("4_85g3d")])
 
 [node name="tile5" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
+trap = ExtResource("7_trceg")
 
 [node name="tile6" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
-starting_effects = Array[Object]([ExtResource("4_85g3d")])
+starting_effects = Array[ExtResource("4_ya4ey")]([ExtResource("4_85g3d")])
 
 [node name="tile7" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
@@ -105,7 +137,264 @@ layout_mode = 2
 [node name="tile16" parent="GridContainer" instance=ExtResource("3_tefeu")]
 layout_mode = 2
 
+[node name="tile17" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile18" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile19" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile20" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile21" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile22" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile23" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile24" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile25" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile26" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile27" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile28" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile29" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile30" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile31" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile32" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile33" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile34" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile35" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile36" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile37" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile38" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile39" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile40" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile41" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile42" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+trap = ExtResource("5_85g3d")
+
+[node name="tile43" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+trap = ExtResource("6_choun")
+
+[node name="tile44" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile45" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile46" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile47" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile48" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile49" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile50" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile51" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile52" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile53" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile54" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile55" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile56" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile57" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile58" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile59" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile60" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile61" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile62" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile63" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile64" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile65" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile66" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile67" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile68" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile69" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile70" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile71" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile72" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile73" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile74" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile75" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile76" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile77" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile78" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile79" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile80" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile81" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile82" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile83" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile84" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile85" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile86" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile87" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile88" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile89" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile90" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile91" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+trap = ExtResource("11_a8y0u")
+
+[node name="tile92" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile93" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile94" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile95" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile96" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile97" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
+[node name="tile98" parent="GridContainer" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+
 [node name="skeleton_dude" parent="." instance=ExtResource("8_choun")]
+
+[node name="skeleton_dude2" parent="." instance=ExtResource("8_choun")]
+
+[node name="skeleton_dude3" parent="." instance=ExtResource("8_choun")]
+
+[node name="skeleton_dude4" parent="." instance=ExtResource("8_choun")]
+
+[node name="skeleton_dude5" parent="." instance=ExtResource("8_choun")]
 
 [node name="character" parent="." node_paths=PackedStringArray("health_ui") instance=ExtResource("3_sugp2")]
 layout_mode = 0
@@ -115,31 +404,3 @@ health_ui = NodePath("../Panel/P1 Health")
 [node name="character2" parent="." node_paths=PackedStringArray("health_ui") instance=ExtResource("3_sugp2")]
 layout_mode = 0
 health_ui = NodePath("../Panel/P2 Health")
-
-[node name="Panel" type="Panel" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="P1 Health" parent="Panel" node_paths=PackedStringArray("player") instance=ExtResource("6_tefeu")]
-layout_mode = 1
-offset_top = 12.0
-offset_bottom = 77.0
-player_1 = true
-player = NodePath("../../character")
-
-[node name="P2 Health" parent="Panel" node_paths=PackedStringArray("player") instance=ExtResource("6_tefeu")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -176.0
-offset_top = 12.0
-offset_right = -12.0
-offset_bottom = 77.0
-grow_horizontal = 0
-player = NodePath("../../character2")

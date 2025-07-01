@@ -41,6 +41,7 @@ right_arrow = SubResource("AtlasTexture_m0awk")
 image = NodePath("image")
 input_checks = NodePath("input_checks")
 input_complete_icon = NodePath("input_complete_icon")
+health = 1
 
 [node name="image" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(40, 40)

@@ -26,7 +26,6 @@ offset_bottom = 64.0
 theme = SubResource("Theme_tefeu")
 texture = SubResource("AtlasTexture_jy7pm")
 script = ExtResource("2_jy7pm")
-starting_effects = null
 
 [node name="trap_texture" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -42,4 +41,5 @@ offset_right = 27.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(13, 13)
 texture = SubResource("AtlasTexture_q7utx")
