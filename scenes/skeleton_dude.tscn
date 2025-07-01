@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpxv3wx8y3eeo"]
+
+[ext_resource type="Script" uid="uid://d1urqryipxwqr" path="res://scenes/skeleton_dude.gd" id="1_hheh4"]
+[ext_resource type="Texture2D" uid="uid://donyfprdbc8bt" path="res://assets/kenney_1-bit-pack/Tilesheet/colored-transparent.png" id="2_w5imw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hheh4"]
+atlas = ExtResource("2_w5imw")
+region = Rect2(391, 340, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5imw"]
+atlas = ExtResource("2_w5imw")
+region = Rect2(425, 340, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74b5r"]
+atlas = ExtResource("2_w5imw")
+region = Rect2(442, 340, 17, 17)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8taho"]
+load_path = "res://.godot/imported/colored-transparent.png-314fab4bf0f4e2f674e6c1353c795bfb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0awk"]
+atlas = SubResource("CompressedTexture2D_8taho")
+region = Rect2(408, 340, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkhd4"]
+atlas = ExtResource("2_w5imw")
+region = Rect2(493, 102, 17, 17)
+
+[node name="skeleton_dude" type="Control" node_paths=PackedStringArray("image", "input_checks", "input_complete_icon")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(20, 20)
+script = ExtResource("1_hheh4")
+up_arrow = SubResource("AtlasTexture_hheh4")
+down_arrow = SubResource("AtlasTexture_w5imw")
+left_arrow = SubResource("AtlasTexture_74b5r")
+right_arrow = SubResource("AtlasTexture_m0awk")
+image = NodePath("image")
+input_checks = NodePath("input_checks")
+input_complete_icon = NodePath("input_complete_icon")
+
+[node name="image" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.05
+anchor_bottom = 1.075
+pivot_offset = Vector2(20, 20)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_rkhd4")
+metadata/_edit_use_anchors_ = true
+
+[node name="input_checks" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -6.0
+offset_right = 20.0
+offset_bottom = -1.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="input_checks"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_w5imw")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="input_checks"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_w5imw")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="input_checks"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_w5imw")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="input_checks"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_w5imw")
+expand_mode = 1
+
+[node name="input_complete_icon" type="NinePatchRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 0
+offset_left = 18.0
+offset_top = -6.0
+offset_right = 23.0
+offset_bottom = -1.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_w5imw")
+region_rect = Rect2(461.29, 359.548, 11.3311, 11.1513)

@@ -3,7 +3,7 @@ class_name Character
 
 @onready var grid : Grid = get_tree().get_first_node_in_group("grid")
 @export var image : TextureRect
-@export var player_1 : bool
+
 @export var input_checks : HBoxContainer
 @export var input_complete_icon : NinePatchRect
 @export var health_ui : HealthUI
@@ -25,8 +25,7 @@ func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
 	current_tile = grid.all_tiles.pick_random()
 	set_tile(current_tile, true)
-	for check in input_checks.get_children():
-		check.hide()
+
 	input_complete_icon.hide()
 
 
@@ -91,25 +90,6 @@ func move_in_direction(direction : DIRECTION, succeed : bool):
 	
 
 
-func _process(_delta: float) -> void:
-	if player_1:
-		if Input.is_action_just_pressed("player_1_move_up"):
-			add_action(DIRECTION.UP)
-		elif Input.is_action_just_pressed("player_1_move_left"):
-			add_action(DIRECTION.LEFT)
-		elif Input.is_action_just_pressed("player_1_move_right"):
-			add_action(DIRECTION.RIGHT)
-		elif Input.is_action_just_pressed("player_1_move_down"):
-			add_action(DIRECTION.DOWN)
-	else:
-		if Input.is_action_just_pressed("player_2_move_up"):
-			add_action(DIRECTION.UP)
-		elif Input.is_action_just_pressed("player_2_move_left"):
-			add_action(DIRECTION.LEFT)
-		elif Input.is_action_just_pressed("player_2_move_right"):
-			add_action(DIRECTION.RIGHT)
-		elif Input.is_action_just_pressed("player_2_move_down"):
-			add_action(DIRECTION.DOWN)
 
 func predict_action(action : DIRECTION) -> Tile:
 	var return_tile = current_tile
@@ -149,20 +129,14 @@ func kill_player():
 	image.modulate = Color(0.1, 0.1, 0.1, 1)
 	health_ui.lil_guy.flip_v = true
 	health_ui.lil_guy.modulate = Color(0.1, 0.1, 0.1, 1)
-	Stage.playerDead += 1 if player_1 else 2 ## this way if both players die together we'll know because it'll be 3 lol
+	#Stage.playerDead += 1 if player_1 else 2 ## this way if both players die together we'll know because it'll be 3 lol
 	pass
 	
 func add_action(action : DIRECTION):
 	if inputs.size() >= 4:
 		return
 	inputs.append(action)
-	var check = input_checks.get_child(inputs.size() - 1)
-	if check: check.show()
-	if inputs.size() >= 4:
-		for child in input_checks.get_children():
-			child.hide()
-		ready_to_move = true
-		input_complete_icon.show()
+	
 func clear_actions():
 	inputs.clear()
 	input_complete_icon.hide()
