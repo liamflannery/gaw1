@@ -7,6 +7,8 @@ class_name NPC
 @export var right_arrow : Texture
 
 func choose_actions():
+	if dead:
+		return
 	add_action(DIRECTION[DIRECTION.keys().pick_random()])
 	add_action(DIRECTION[DIRECTION.keys().pick_random()])
 	add_action(DIRECTION[DIRECTION.keys().pick_random()])
@@ -28,6 +30,15 @@ func add_action(direction : DIRECTION):
 			this_input.texture = right_arrow
 	this_input.show()
 	input_checks.show()
-			
-		
+
+
+func kill_player():
+	if dead:
+		return
+	dead = true
+	image.flip_v = true
+	image.modulate = Color(0.1, 0.1, 0.1, 1)
 	
+	input_checks.hide()
+	if current_tile:
+		current_tile.character_exited(self)

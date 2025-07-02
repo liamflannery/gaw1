@@ -20,12 +20,15 @@ func move_players():
 	player_2.ready_to_move = false
 	for npc in npcs: 
 		npc.ready_to_move = false
+		npc.input_checks.hide()
 	player_1.input_complete_icon.hide()
 	player_2.input_complete_icon.hide()
 	for i in range(4):
 		
 		var proposed_tiles = {} ## key will be a tile that someone wants to go to, value will be an array of all characters that want to go to that tile.
 		for char : Character in characters:
+			if char.inputs == null || char.inputs.size() <= i:
+				continue
 			if proposed_tiles.has(char.predict_action(char.inputs[i])):
 				proposed_tiles[char.predict_action(char.inputs[i])].append(char)
 			else:

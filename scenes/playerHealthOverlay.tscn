@@ -89,6 +89,7 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p0333")
 
 [node name="Guy" type="TextureRect" parent="HBoxContainer/Panel"]
+modulate = Color(0.435294, 0.819608, 1, 1)
 texture_filter = 1
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2

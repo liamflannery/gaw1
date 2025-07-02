@@ -15,12 +15,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(20, 20)
 script = ExtResource("2_rkhd4")
+player_2_colour = Color(0.999523, 0.639915, 0.709397, 1)
 image = NodePath("image")
 input_checks = NodePath("input_checks")
 input_complete_icon = NodePath("input_complete_icon")
 
 [node name="image" type="TextureRect" parent="."]
-self_modulate = Color(0.992006, 0.741109, 0.180412, 1)
+modulate = Color(0.435294, 0.819608, 1, 1)
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = -1

@@ -17,6 +17,7 @@ func _ready() -> void:
 		styleBox.border_color = player_2_border_colour
 		add_theme_stylebox_override("panel", styleBox)
 		textLabel.text = "P2 HEALTH"
+		lil_guy.modulate = player_2_border_colour
 
 func set_health(amount : int):
 	%heart_1.texture = shadowTexture
