@@ -7,9 +7,11 @@ load_path = "res://.godot/imported/colored-transparent.png-314fab4bf0f4e2f674e6c
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5wbjx"]
 atlas = SubResource("CompressedTexture2D_gtlqa")
-region = Rect2(663, 357, 17, 17)
+region = Rect2(204, 306, 17, 17)
 
 [resource]
 script = ExtResource("1_5wbjx")
 effect_texture = SubResource("AtlasTexture_5wbjx")
+flip_image_h = false
+flip_image_v = false
 metadata/_custom_type_script = "uid://b12jl643dphhk"
